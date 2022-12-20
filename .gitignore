@@ -6663,3 +6663,7 @@ Library/ArtifactDB-lock
 Library/ArtifactDB
 Library/APIUpdater/project-dependencies.graph
 Library/AnnotationManager
+Temp/tempFile.res
+Temp/tempFile.resG
+Temp/UnityLockfile
+Temp/workerlic
