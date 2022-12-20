@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\Menu\Buttons.cs" />
+    <Compile Include="Assets\Scripts\Menu\Options.cs" />
+    <Compile Include="Assets\Scripts\Managers\MusicManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
