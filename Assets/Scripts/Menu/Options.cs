@@ -17,7 +17,7 @@ public class Options : MonoBehaviour
     //getters
     public float MasterVolume
     {
-        get;
+        get { return masterVolume; }
     }
 
     //References
@@ -76,8 +76,8 @@ public class Options : MonoBehaviour
         GetVolume();
     }
 
-    //Set the mastor volum according to the scrollbar
-    private void SetMasterVolume(float volume)
+    //Set the master volume according to the slider
+    public void SetMasterVolume(float volume)
     {
         if(masterMixer == null) { return; }
         masterMixer.SetFloat(Tags.MIXER_MASTER_VOLUME, volume);

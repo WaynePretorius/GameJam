@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Buttons : MonoBehaviour
 {
-    [SerializeField] private GameObject optionsPanel;
-
+    //variables
     [SerializeField] private int startAnimation;
     [SerializeField] private int disableOptionPanel;
+
+    //References
+    [SerializeField] private GameObject optionsPanel;
+
+    private AudioSource buttonSound;
 
     //quits the game
     public void Quit()
@@ -18,12 +23,13 @@ public class Buttons : MonoBehaviour
     //starts the game
     public void Start()
     {
-        
+        buttonSound = GetComponent<Soundsource>().GetComponent<AudioSource>();
     }
 
     //opens option button
     public void Options()
     {
+        buttonSound.PlayOneShot(GetComponent<Soundsource>().PlayButtonSound());
         StartCoroutine(StartOptions());
     }
 
@@ -38,6 +44,9 @@ public class Buttons : MonoBehaviour
     //when the back button is pressed in the options panel
     public void OptionsBack()
     {
+        MusicManager saveAudio = FindObjectOfType<MusicManager>();
+        saveAudio.SaveMusicVolume();
+        saveAudio.SaveMasterVolume();
         StartCoroutine(OnOptionsBackPressed());
     }
 

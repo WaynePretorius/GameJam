@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Menu\Buttons.cs" />
     <Compile Include="Assets\Scripts\Menu\Options.cs" />
     <Compile Include="Assets\Scripts\Managers\MusicManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Soundsource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

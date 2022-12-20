@@ -13,4 +13,5 @@ public static class Tags
     //PlayerPrefs
     public static string PPREFS_MASTER_VOLUME = "masterVolume";
     public static string PPREFS_MUSIC_VOLUME = "musicVolume";
+    public static string PPREFS_SFX_VOLUME = "soundVolume";
 }
