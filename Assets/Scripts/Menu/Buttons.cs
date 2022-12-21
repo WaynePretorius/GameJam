@@ -14,16 +14,17 @@ public class Buttons : MonoBehaviour
 
     private AudioSource buttonSound;
 
+    //starts the game
+    private void Start()
+    {
+        buttonSound = GetComponent<Soundsource>().GetComponent<AudioSource>();
+    }
+
     //quits the game
     public void Quit()
     {
+        buttonSound.PlayOneShot(GetComponent<Soundsource>().PlayButtonSound());
         Application.Quit();
-    }
-
-    //starts the game
-    public void Start()
-    {
-        buttonSound = GetComponent<Soundsource>().GetComponent<AudioSource>();
     }
 
     //opens option button
@@ -33,21 +34,29 @@ public class Buttons : MonoBehaviour
         StartCoroutine(StartOptions());
     }
 
-    //activates option panel and plays animation
-    private IEnumerator StartOptions()
-    {
-        optionsPanel.SetActive(true);
-        yield return new WaitForSeconds(startAnimation);
-        optionsPanel.GetComponent<Animator>().Play(Tags.PLAY_OPTIONS_PANEL_ENABLE);
-    }
-
     //when the back button is pressed in the options panel
     public void OptionsBack()
     {
         MusicManager saveAudio = FindObjectOfType<MusicManager>();
         saveAudio.SaveMusicVolume();
         saveAudio.SaveMasterVolume();
+        saveAudio.SaveSFXVolume();
+        buttonSound.PlayOneShot(GetComponent<Soundsource>().PlayButtonSound());
         StartCoroutine(OnOptionsBackPressed());
+    }
+
+    private void StartButton()
+    {
+        buttonSound.PlayOneShot(GetComponent<Soundsource>().PlayButtonSound());
+        FindObjectOfType<SceneChanger>().ChangeToNextScene();
+    }
+
+    //activates option panel and plays animation
+    private IEnumerator StartOptions()
+    {
+        optionsPanel.SetActive(true);
+        yield return new WaitForSeconds(startAnimation);
+        optionsPanel.GetComponent<Animator>().Play(Tags.PLAY_OPTIONS_PANEL_ENABLE);
     }
 
     //plays the return animation then disables the option panel

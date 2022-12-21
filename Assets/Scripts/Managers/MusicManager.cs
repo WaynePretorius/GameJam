@@ -24,10 +24,11 @@ public class MusicManager : MonoBehaviour
 
     private bool inMenu = true;
 
-    //getter
+    //getter and setter
     public bool InMenu
     {
         get { return inMenu; }
+        set { inMenu = value; }
     }
 
     //save the music volume
@@ -96,6 +97,14 @@ public class MusicManager : MonoBehaviour
         {
             //play menu music
             myAudio.PlayOneShot(menuAudio);
+        }
+        else
+        {
+            //get a random number depending on the amoun of clips in the game music
+            int newClip = Random.Range(0, gameMusicClips.Count);
+
+            //play that clip
+            myAudio.PlayOneShot(gameMusicClips[newClip]);
         }
     }
 
