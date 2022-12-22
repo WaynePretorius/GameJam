@@ -5,9 +5,18 @@ using UnityEngine;
 public class AppleSpawner : MonoBehaviour
 {
     [SerializeField] List<GameObject> AppleLocations = new List<GameObject>();
+    [SerializeField] Apples applePrefab;
 
-    [SerializeField]private int width;
-    [SerializeField]private int height;
+    [SerializeField] private int width;
+    [SerializeField] private int height;
+    [SerializeField] private int applePrice = 1;
+
+    [SerializeField] private float appleSpawnTime = 2.5f;
+
+    public int ApplePrice
+    {
+        get { return applePrice; }
+    }
 
     public void SetSpawnPoints(int mapWidth, int mapHeight)
     {
@@ -32,5 +41,39 @@ public class AppleSpawner : MonoBehaviour
             //set their spawnpoints to the random numbers
             spawnPoint.transform.position = new Vector3Int(xPos, yPos);
         }
+        StartCoroutine(SpawnApples());
+    }
+
+    //spawn apples in locations
+    private IEnumerator SpawnApples()
+    {
+        //create reference for the current apple prefab
+        Apples currentApple;
+        //the location where the apples will be looked for
+        int location = Random.Range(0, AppleLocations.Count);
+        
+        if (!AppleLocations[location].GetComponentInChildren<Apples>())
+        {
+            //spawn the apples and set it to the current apple bein looked for
+            Apples apple = Instantiate<Apples>(applePrefab, AppleLocations[location].transform.position, AppleLocations[location].transform.rotation);
+            apple.transform.parent = AppleLocations[location].transform;
+            currentApple = apple;
+        }
+        else
+        {
+            //set the apple to the current apples
+            currentApple = AppleLocations[location].GetComponentInChildren<Apples>();
+        }
+
+        if (!currentApple.HasApples)
+        {
+            //add apples if there is none
+            currentApple.CreateApples();
+        }
+        //wait for the alotted time
+        yield return new WaitForSeconds(appleSpawnTime);
+
+        //start again
+        StartCoroutine(SpawnApples());
     }
 }

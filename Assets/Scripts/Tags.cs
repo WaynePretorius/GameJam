@@ -9,8 +9,9 @@ public static class Tags
     //Animations
     public static string PLAY_OPTIONS_PANEL_ENABLE = "OptionPanelAnimationsEnable";
     public static string PLAY_OPTIONS_PANEL_DISABLE = "OptionPanelAnimations";
-    public static string ANIM_WALK = "Rogue_walk_01";
-    public static string ANIM_IDLE = "Rogue_idle_01";
+    public static string ANIM_PLAYER_WALK = "Rogue_walk_01";
+    public static string ANIM_PLAYER_IDLE = "Rogue_idle_01";
+    public static string ANIM_PLAYER_HARVEST = "Rogue_attack_02";
 
     //PlayerPrefs
     public static string PPREFS_MASTER_VOLUME = "masterVolume";
@@ -27,4 +28,7 @@ public static class Tags
 
     //Tags
     public static string TAGS_Collectable = "collectable";
+
+    //Names
+    public static string OBJNAME_APPLE = "Apples";
 }

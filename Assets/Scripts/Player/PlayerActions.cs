@@ -11,47 +11,12 @@ public class PlayerActions : MonoBehaviour
     //Cached References
     [Tooltip("The body of the player, for rotation purposes")]
     [SerializeField] private GameObject playerBody;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource mySFX;
+    [SerializeField] private PlayerResources harvest;
     private Animator myAnimator;
     private Rigidbody2D myBody2D;
-    private AudioSource mySFX;
-
-
-    [SerializeField] private GameObject npcInteractions;
-
-    private bool isInteractableR = false;
-    private bool isInteractableF = false;
 
     private bool inShop = false;
-
-    /// <summary>
-    /// setters for any private variables
-    /// </summary>
-
-    public void SetIsInteractableR(bool isR)
-    {
-        isInteractableR = isR;
-    }
-
-    public void SetInShop(bool inShopnow)
-    {
-        inShop = inShopnow;
-    }
-
-    public bool GetInteractableR()
-    {
-        return isInteractableR;
-    }
-
-    public void SetInteractableF(bool isF)
-    {
-        isInteractableF = isF;
-    }
-
-    public bool GetInteractableF()
-    {
-        return isInteractableF;
-    }
 
     //first function when the object is enabled
     private void Awake()
@@ -71,6 +36,7 @@ public class PlayerActions : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        PlayerInput();
     }
 
     /// <summary>
@@ -92,6 +58,15 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    private void PlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && harvest.CanCollect)
+        {
+            harvest.GatherResource();
+            myAnimator.Play(Tags.ANIM_PLAYER_HARVEST);
+        }
+    }
+
     /// <summary>
     /// moves the character according to the input given
     /// </summary>
@@ -101,17 +76,12 @@ public class PlayerActions : MonoBehaviour
     {
         if (xAxis > 0.1 || xAxis < -0.1 || yAxis > 0.1 || yAxis < -0.1)
         {
-            myAnimator.Play(Tags.ANIM_WALK);
+            myAnimator.Play(Tags.ANIM_PLAYER_WALK);
         }
         else
         {
-            myAnimator.Play(Tags.ANIM_IDLE);
+            myAnimator.Play(Tags.ANIM_PLAYER_IDLE);
         }
-    }
-
-    public void SetplayerInteraction(GameObject triggerDetection)
-    {
-        npcInteractions = triggerDetection;
     }
 
     /// <summary>
