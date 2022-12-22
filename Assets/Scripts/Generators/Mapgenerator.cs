@@ -35,8 +35,8 @@ public class Mapgenerator : MonoBehaviour
     //For the borders of the map
     private void GenGroundTiles()
     {
-        int groundWidth = 450;
-        int groundLength = 450;
+        int groundWidth = tileSettings.mapWidth + 200;
+        int groundLength = tileSettings.mapHeight + 200;
 
         int xPos = groundWidth / 2;
         int yPos = groundLength / 2;
