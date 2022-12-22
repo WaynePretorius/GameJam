@@ -75,6 +75,7 @@ public class MusicManager : MonoBehaviour
     {
         Initiliaze();
         SetMusicVolume(musicVolume);
+        SetSFXVolume(soundVolume);
     }
 
     //initlize all variables and set them
@@ -114,6 +115,11 @@ public class MusicManager : MonoBehaviour
         myAudio.volume = musicVolume;
     }
 
+    public void SetSFXVolume(float soundVol)
+    {
+        soundSource.volume = soundVol;
+    }
+
     private void Update()
     {
         //when the audioSource stops playing
@@ -124,6 +130,13 @@ public class MusicManager : MonoBehaviour
             {
                 //play the menu music
                 myAudio.PlayOneShot(menuAudio);
+            }
+            else
+            {
+                //get a random number according the clips in the list
+                int index = Random.Range(0, gameMusicClips.Count);
+                //play the clip
+                myAudio.PlayOneShot(gameMusicClips[index]);
             }
         }
 

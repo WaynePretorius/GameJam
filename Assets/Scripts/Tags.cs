@@ -14,4 +14,8 @@ public static class Tags
     public static string PPREFS_MASTER_VOLUME = "masterVolume";
     public static string PPREFS_MUSIC_VOLUME = "musicVolume";
     public static string PPREFS_SFX_VOLUME = "soundVolume";
+    public static string PPREFS_RANDOM_MAP_NUMBER = "randomMapNumber";
+
+    //Map
+    public static string MAP_TERRAIN_NAME = "Tilemesh";
 }

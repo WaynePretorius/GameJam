@@ -45,10 +45,21 @@ public class Buttons : MonoBehaviour
         StartCoroutine(OnOptionsBackPressed());
     }
 
-    private void StartButton()
+    public void StartButton()
     {
+        //play the button sound
         buttonSound.PlayOneShot(GetComponent<Soundsource>().PlayButtonSound());
+
+        //spawn a random number for the map to generate
+        int randomMapNumber = Random.Range(-10000, 10000);
+        PlayerPrefs.SetInt(Tags.PPREFS_RANDOM_MAP_NUMBER, randomMapNumber);
+        
+        //change music to game music
+        FindObjectOfType<MusicManager>().InMenu = false;
+
+        //change the scene
         FindObjectOfType<SceneChanger>().ChangeToNextScene();
+
     }
 
     //activates option panel and plays animation

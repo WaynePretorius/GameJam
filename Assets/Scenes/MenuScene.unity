@@ -584,6 +584,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buttons
       objectReference: {fileID: 0}
+    - target: {fileID: 8947285628897916148, guid: 9185530632b0d3046b84ec04b6f69f52, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 81264233b15d7554eafc051b4a57c02f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9185530632b0d3046b84ec04b6f69f52, type: 3}
 --- !u!1001 &4332287934463440840
@@ -760,6 +764,34 @@ PrefabInstance:
       value: Buttons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5957987521463374464, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 786270579}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Buttons, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957987521519759064, guid: 81572cf746300c5449cce317d9daa180, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
