@@ -52,7 +52,7 @@ public class Buttons : MonoBehaviour
 
         //spawn a random number for the map to generate
         int randomMapNumber = Random.Range(-10000, 10000);
-        PlayerPrefs.SetInt(Tags.PPREFS_RANDOM_MAP_NUMBER, randomMapNumber);
+        PlayerPrefs.SetString(Tags.PPREFS_RANDOM_MAP_NUMBER, randomMapNumber.ToString());
         
         //change music to game music
         FindObjectOfType<MusicManager>().InMenu = false;

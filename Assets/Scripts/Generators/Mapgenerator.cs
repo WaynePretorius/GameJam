@@ -4,8 +4,7 @@ using UnityEngine.Tilemaps;
 public class Mapgenerator : MonoBehaviour
 {
     //variables
-    [SerializeField] private int iterations = 5;
-    [SerializeField] private int RandomFillPercent = 100;
+    [Range(0,100)][SerializeField] private int RandomFillPercent = 50;
 
     //References
     [SerializeField] Transform parentObject;
@@ -14,16 +13,21 @@ public class Mapgenerator : MonoBehaviour
 
     private GameObject background;
 
-    private void Start()
+    private MapWall wall;
+
+    private void Awake()
     {
         GenerateChunk();
         GenGroundTiles();
+        wall = FindObjectOfType<MapWall>();
+        wall.SetWall(tileSettings.mapWidth, tileSettings.mapHeight);
+        FindObjectOfType<AppleSpawner>().SetSpawnPoints(tileSettings.mapWidth, tileSettings.mapHeight);
     }
 
     private void GenerateChunk()
     {
         //Generate the chunk
-        TileChunk chunk = new TileChunk(RandomFillPercent, iterations, parentObject, tileSettings);
+        TileChunk chunk = new TileChunk(RandomFillPercent, parentObject, tileSettings);
         chunk.GenerateChunk();
     }
 
@@ -39,7 +43,7 @@ public class Mapgenerator : MonoBehaviour
 
         background = new GameObject(tileSettings.grids[4].gridName);
         background.transform.parent = parentObject;
-        background.transform.position = new Vector3Int(xPos, yPos, 0);
+        background.transform.position = new Vector3Int(-xPos, -yPos, 0);
         background.AddComponent<Tilemap>();
         background.AddComponent<TilemapRenderer>();
         background.GetComponent<TilemapRenderer>().sortingOrder = tileSettings.grids[4].sortOrder;

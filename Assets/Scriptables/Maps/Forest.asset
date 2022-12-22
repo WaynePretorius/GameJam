@@ -211,8 +211,8 @@ MonoBehaviour:
     tilemap: {fileID: 7233071609300575019, guid: e749a24799a560642a23aab8b04809ab, type: 3}
     mapTiles:
     - {fileID: 11400000, guid: a1bf26ddf65a8544a84cebe088cd8063, type: 2}
-  iterations: 5
-  mapWidth: 200
-  mapHeight: 200
-  minChanceForSpawning: 10
-  MaxChanceForSpawning: 85
+  iterations: 15
+  mapWidth: 400
+  mapHeight: 400
+  minChanceForSpawning: 100
+  MaxChanceForSpawning: 135

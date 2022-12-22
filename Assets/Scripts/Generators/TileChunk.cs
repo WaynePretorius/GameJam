@@ -12,7 +12,6 @@ public class TileChunk
     private int mapHeight;
     private int minRange;
     private int maxRange;
-    private int seedNumber;
     private string seedName;
 
     //References
@@ -24,34 +23,40 @@ public class TileChunk
     private GameObject stoneLayerOBJ;
     private GameObject bushLayer;
 
-    public TileChunk(int randomFillPercent, int iterations, Transform parentObject, TileSettings tileSettings)
+    bool useRandomSeed;
+
+    public TileChunk(int randomFillPercent, Transform parentObject, TileSettings tileSettings)
     {
         //sets the variables of the chunk
         this.randomFillPercent = randomFillPercent;
-        this.iterations = iterations;
         this.tileSettings = tileSettings;
 
         mapWidth = tileSettings.mapWidth;
         mapHeight = tileSettings.mapHeight;
+        iterations = tileSettings.iterations;
+        minRange = tileSettings.minChanceForSpawning;
+        maxRange = tileSettings.MaxChanceForSpawning;
 
-        Vector2 currentPos = new Vector2(mapWidth, mapHeight);
+        Vector2 currentPos = new Vector2(-(mapWidth/2), -(mapHeight/2));
 
         //create the gameobject that will have the grid
         tileMesh = new GameObject(Tags.MAP_TERRAIN_NAME);
         tileMesh.AddComponent<Grid>();
         tileMesh.transform.position = new Vector2(currentPos.x, currentPos.y);
         tileMesh.transform.parent = parentObject.transform;
+
+        useRandomSeed = false;
     }
 
     public void GenerateChunk()
     {
         //gets the seednumber for the map
-        seedNumber = PlayerPrefs.GetInt(Tags.PPREFS_RANDOM_MAP_NUMBER);
+        seedName = PlayerPrefs.GetString(Tags.PPREFS_RANDOM_MAP_NUMBER);
+
+        MoveGrid();
 
         //sets the map as new. When the function is called, the map is spawned
         map = new int[mapWidth, mapHeight];
-
-        MoveGrid();
 
         RandomFillChunk();
 
@@ -106,8 +111,10 @@ public class TileChunk
     //randomly fills the map. The borders are set as 1, then the next tiles will start generating randomly, giving it a different sets of heights
     private void RandomFillChunk()
     {
-        //set the number to string value
-        seedName = seedNumber.ToString();
+        if (useRandomSeed) 
+        {
+            seedName = Random.Range(0, 1000).ToString();
+        }
 
         //get the hashcode to randomly generate according to the name
         System.Random mapName = new System.Random(seedName.GetHashCode());
@@ -183,11 +190,11 @@ public class TileChunk
         {
             ClearGrids();
 
-            int smallObstacleCount = 0;
-            int smallOBJMaxCount = MaxCount();
+            int rockCount = 0;
+            int rockMaxCount = MaxCount();
 
-            int largeObstacleCount = 0;
-            int largeOBJMaxCount = MaxCount();
+            int bushCount = 0;
+            int bushMaxCount = MaxCount();
 
             for (int x = 0; x < mapWidth; x++)
             {
@@ -195,8 +202,27 @@ public class TileChunk
                 {
                     groundLayerOBJ.GetComponent<Tilemap>().SetTile(new Vector3Int(x, y, 0), tileSettings.grids[0].mapTiles[0]);
                     GenerateFloorTiles(x, y);
-                    GenerateSmallObstacles(ref smallObstacleCount, ref smallOBJMaxCount, x, y);
-                    GenerateLargeObstacles(ref largeObstacleCount, ref largeOBJMaxCount, x, y);
+                    if (rockCount > rockMaxCount)
+                    {
+                        GenerateRocks(x, y);
+                        rockCount = 0;
+                        bushMaxCount = MaxCount();
+                    }
+                    else 
+                    { 
+                        rockCount++; 
+                    }
+
+                    if (bushCount > bushMaxCount)
+                    {
+                        GenerateBushes(x, y);
+                        bushCount = 0;
+                        bushMaxCount = MaxCount();
+                    }
+                    else
+                    {
+                        bushCount++;
+                    }
                 }
             }
         }
@@ -216,7 +242,7 @@ public class TileChunk
     {
         Tile floorTiles = ReturnTile(tileSettings.grids[1].mapTiles);
 
-        Tile thisTile = (map[x, y] == 0) ? floorTiles : null;
+        Tile thisTile = (map[x, y] == 1) ? floorTiles : null;
         grassLayerOBJ.GetComponent<Tilemap>().SetTile(new Vector3Int(x, y, 0), thisTile);
 
     }
@@ -228,43 +254,24 @@ public class TileChunk
     }
 
     //adds the obstacles to the map(rocks etc)
-    private void GenerateSmallObstacles(ref int count, ref int maxCount, int width, int height)
+    private void GenerateRocks(int width, int height)
     {
         //if the mapheight is high
         if (map[width, height] == 1)
         {
-            //if the amounts of heights are more than maxcount
-            if (count > maxCount)
-            {
                 //add the tile
                 Tile stoneTile = ReturnTile(tileSettings.grids[2].mapTiles);
                 stoneLayerOBJ.GetComponent<Tilemap>().SetTile(new Vector3Int(width, height, 0), stoneTile);
-                count = 0;
-                maxCount = MaxCount();
-            }
-            else
-            {
-                count++;
-            }
         }
     }
 
     //adds the larger obstacles to the map(trees, cars etc)
-    private void GenerateLargeObstacles(ref int count, ref int maxCount, int width, int height)
+    private void GenerateBushes(int width, int height)
     {
-        if (map[width, height] == 0)
+        if (map[width, height] == 1)
         {
-            if (count > maxCount)
-            {
-                Tile bushTile = ReturnTile(tileSettings.grids[3].mapTiles);
-                bushLayer.GetComponent<Tilemap>().SetTile(new Vector3Int(width, height, 0), bushTile);
-                count = 0;
-                maxCount = MaxCount();
-            }
-            else
-            {
-                count++;
-            }
+            Tile bushTile = ReturnTile(tileSettings.grids[3].mapTiles);
+            bushLayer.GetComponent<Tilemap>().SetTile(new Vector3Int(width, height, 0), bushTile);
         }
     }
 

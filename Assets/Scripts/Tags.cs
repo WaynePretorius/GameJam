@@ -9,6 +9,8 @@ public static class Tags
     //Animations
     public static string PLAY_OPTIONS_PANEL_ENABLE = "OptionPanelAnimationsEnable";
     public static string PLAY_OPTIONS_PANEL_DISABLE = "OptionPanelAnimations";
+    public static string ANIM_WALK = "Rogue_walk_01";
+    public static string ANIM_IDLE = "Rogue_idle_01";
 
     //PlayerPrefs
     public static string PPREFS_MASTER_VOLUME = "masterVolume";
@@ -18,4 +20,11 @@ public static class Tags
 
     //Map
     public static string MAP_TERRAIN_NAME = "Tilemesh";
+
+    //Axis
+    public static string AXIS_HORIZONTAL = "Horizontal";
+    public static string AXIS_VERTICAL = "Vertical";
+
+    //Tags
+    public static string TAGS_Collectable = "collectable";
 }
