@@ -31,4 +31,8 @@ public static class Tags
 
     //Names
     public static string OBJNAME_APPLE = "Apples";
+
+    //Inventory
+    public static string INVENTORY_OBJ_SPRITE = "icon";
+    public static string INVENTORY_OBJ_AMOUNT = "amount";
 }

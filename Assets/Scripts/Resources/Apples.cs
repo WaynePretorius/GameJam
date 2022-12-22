@@ -19,6 +19,8 @@ public class Apples : MonoBehaviour
     [SerializeField] private Sprite littleApplesSprite;
     [SerializeField] private Sprite lotsApplesSprite;
     [SerializeField] private Sprite maxApplesSprite;
+    [SerializeField] private Item item;
+
     private SpriteRenderer mySprite;
 
     //states

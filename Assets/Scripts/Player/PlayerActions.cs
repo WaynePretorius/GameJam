@@ -13,10 +13,13 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject playerBody;
     [SerializeField] private AudioSource mySFX;
     [SerializeField] private PlayerResources harvest;
+    [SerializeField] private GameObject inventory;
+
     private Animator myAnimator;
     private Rigidbody2D myBody2D;
 
     private bool inShop = false;
+    private bool inInventory = false;
 
     //first function when the object is enabled
     private void Awake()
@@ -64,6 +67,17 @@ public class PlayerActions : MonoBehaviour
         {
             harvest.GatherResource();
             myAnimator.Play(Tags.ANIM_PLAYER_HARVEST);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inInventory = !inInventory;
+            inventory.SetActive(inInventory);
+
+            if (inInventory)
+            {
+                InventoryManager.Instance.ListItems();
+            }
         }
     }
 
