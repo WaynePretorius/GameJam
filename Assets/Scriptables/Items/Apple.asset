@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7294ef916d2e75a43ae70ffceb63073e, type: 3}
   m_Name: Apple
   m_EditorClassIdentifier: 
-  <isStackable>k__BackingField: 0
-  <MaxStacSize>k__BackingField: 0
-  <Name>k__BackingField: 
+  <isStackable>k__BackingField: 1
+  <MaxStacSize>k__BackingField: 1000
+  <Name>k__BackingField: Apple
   <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 0}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: e0a1b797b93dc604b98dafac094dd326, type: 3}
