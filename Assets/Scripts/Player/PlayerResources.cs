@@ -80,11 +80,11 @@ public class PlayerResources : MonoBehaviour
     {
         if(canCollect)
         {
+            //if it is an apple, then it can be harvested
             if (targetObject.gameObject.name.Contains(Tags.OBJNAME_APPLE))
             {
-                Debug.Log("canharves");
+                //get the target apple component and harves, while adding the apples to the character
                 Apples targetApple = targetObject.GetComponent<Apples>();
-                Debug.Log(targetApple.transform.position);
                 currentApples += targetApple.collectApples(harvestAmount);
             }
         }

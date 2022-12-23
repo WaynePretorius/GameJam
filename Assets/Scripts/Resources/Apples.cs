@@ -11,15 +11,15 @@ public class Apples : MonoBehaviour
     [SerializeField] private int showlittleApples;
     [SerializeField] private int showlotsApples;
     [SerializeField] private int showMaxApples;
+    [SerializeField] private int applePrice = 3;
 
-    [SerializeField]private int apples;
+    [SerializeField] private int apples;
 
     //references
     [SerializeField] private Sprite minApplesSprite;
     [SerializeField] private Sprite littleApplesSprite;
     [SerializeField] private Sprite lotsApplesSprite;
     [SerializeField] private Sprite maxApplesSprite;
-    [SerializeField] private Item item;
 
     private SpriteRenderer mySprite;
 

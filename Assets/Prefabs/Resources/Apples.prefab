@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2281249889437331396}
   - component: {fileID: 2751881884531130011}
   - component: {fileID: 3835095333078291982}
-  - component: {fileID: 3292803917905967725}
   m_Layer: 0
   m_Name: Apples
   m_TagString: collectable
@@ -53,12 +52,12 @@ MonoBehaviour:
   showlittleApples: 7
   showlotsApples: 11
   showMaxApples: 12
+  applePrice: 3
   apples: 0
   minApplesSprite: {fileID: 1393321494, guid: fd4aae00a04872b4eb97475bcb32e594, type: 3}
   littleApplesSprite: {fileID: 1605075290, guid: fd4aae00a04872b4eb97475bcb32e594, type: 3}
   lotsApplesSprite: {fileID: 413819047, guid: fd4aae00a04872b4eb97475bcb32e594, type: 3}
   maxApplesSprite: {fileID: 263145197, guid: fd4aae00a04872b4eb97475bcb32e594, type: 3}
-  item: {fileID: 11400000, guid: f5e527ba4791d514cb5ecae770213e4f, type: 2}
 --- !u!61 &2751881884531130011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,16 +136,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3292803917905967725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5458111021077259122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f23649f3fea5f8b4f8d9a33d8b00d7f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: f5e527ba4791d514cb5ecae770213e4f, type: 2}

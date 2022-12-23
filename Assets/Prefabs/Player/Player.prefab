@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 2604464679163691631}
   - component: {fileID: 2604464679163691624}
   - component: {fileID: 2256224346400487745}
+  - component: {fileID: 1333949910}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -274,10 +275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c90844329d2a3b94396b319ace573e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   playerBody: {fileID: 2605164511850987740}
   mySFX: {fileID: 0}
-  harvest: {fileID: 0}
+  harvest: {fileID: 2256224346400487745}
+  inventory: {fileID: 0}
 --- !u!114 &2256224346400487745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +296,20 @@ MonoBehaviour:
   harvestAmount: 2
   appleText: {fileID: 0}
   pressR: {fileID: 0}
+  targetObject: {fileID: 0}
+--- !u!114 &1333949910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2604464679163691626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412252997aff1b44e9d0d0fe5e7fd8e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
 --- !u!1 &2604464679263396772
 GameObject:
   m_ObjectHideFlags: 0

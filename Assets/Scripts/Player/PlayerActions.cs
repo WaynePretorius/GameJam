@@ -13,7 +13,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject playerBody;
     [SerializeField] private AudioSource mySFX;
     [SerializeField] private PlayerResources harvest;
-    [SerializeField] private GameObject inventory;
+    [SerializeField] private InventoryPage inventory;
 
     private Animator myAnimator;
     private Rigidbody2D myBody2D;
@@ -65,19 +65,17 @@ public class PlayerActions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && harvest.CanCollect)
         {
+            //default key for harvesting
             harvest.GatherResource();
             myAnimator.Play(Tags.ANIM_PLAYER_HARVEST);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
+            //open and closes the inventory
             inInventory = !inInventory;
-            inventory.SetActive(inInventory);
+            inventory.ShowInventory(inInventory);
 
-            if (inInventory)
-            {
-                InventoryManager.Instance.ListItems();
-            }
         }
     }
 
