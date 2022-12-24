@@ -1006,6 +1006,42 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1816282749}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1816282749}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: inventoryData
+      value: 
+      objectReference: {fileID: 11400000, guid: b60b7a5c53324c245a8f4abbf1a9fac1, type: 2}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: ccae30ae079808f40b73986f9f650529, type: 2}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[3].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 49eef073943bd5745bab21a0f7c9a959, type: 2}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[6].item
+      value: 
+      objectReference: {fileID: 11400000, guid: ccae30ae079808f40b73986f9f650529, type: 2}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[1].quantity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[3].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333949910, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
+      propertyPath: initialItems.Array.data[6].quantity
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2256224346400487745, guid: dad1710cacaf2734db34b2a72f0ba02c, type: 3}
       propertyPath: pressR
       value: 
@@ -1079,13 +1115,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1302363109704370587, guid: 140f7a3b2d867aa4584aa1d627c2b0db, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1302363110596962284, guid: 140f7a3b2d867aa4584aa1d627c2b0db, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 173.3
       objectReference: {fileID: 0}
     - target: {fileID: 1302363110596962287, guid: 140f7a3b2d867aa4584aa1d627c2b0db, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3400779123279715264, guid: 140f7a3b2d867aa4584aa1d627c2b0db, type: 3}
       propertyPath: m_Name
