@@ -30,7 +30,7 @@ namespace InventorySpace.DataStructure
             }
         }
 
-        public int AddItem(Item item, int quantity)
+        public int AddItem(Item item, int quantity, List<ItemParameter> parameter = null)
         {
             //if the item can't be stacked
             if (item.isStackable == false)
@@ -39,7 +39,7 @@ namespace InventorySpace.DataStructure
                     while (quantity > 0 && IsInventoryFull() == false)
                     {
                         //add the item, only 1 of them
-                        quantity -= AddItemToFreeSlot(item, 1);
+                        quantity -= AddItemToFreeSlot(item, 1, parameter);
                     }
                     InformAboutChange();
                     return quantity;
@@ -55,12 +55,13 @@ namespace InventorySpace.DataStructure
         /// <param name="item">item that is given</param>
         /// <param name="quantity">quantity that comes with the item, non and stacakble</param>
         /// <returns></returns>
-        private int AddItemToFreeSlot(Item item, int quantity)
+        private int AddItemToFreeSlot(Item item, int quantity, List<ItemParameter> parameter = null)
         {
             InventoryItemScribatable newItem = new InventoryItemScribatable
             {
                 item = item,
-                quantity = quantity
+                quantity = quantity,
+                parameters = new List<ItemParameter>(parameter == null?item.defaultParamter : parameter)
             };
 
             for (int i = 0; i < inventoryItems.Count; i++)
@@ -73,6 +74,29 @@ namespace InventorySpace.DataStructure
             }
             return 0;
         }
+
+        public void RemoveItem(int itemIndex, int value)
+        {
+            if(inventoryItems.Count > itemIndex)
+            {
+                if (inventoryItems[itemIndex].IsEmpty) 
+                {
+                    return; 
+                }
+                int remainder = inventoryItems[itemIndex].quantity - value;
+                if(remainder <= 0)
+                {
+                    inventoryItems[itemIndex] = InventoryItemScribatable.GetEmptyItem();
+                }
+                else
+                {
+                    inventoryItems[itemIndex] = inventoryItems[itemIndex].ChangeQuantity(remainder);
+                }
+
+                InformAboutChange();
+            }
+        }
+
         /// <summary>
         /// Look at all the inventory slots, if the are empty, return false otherwise returns true if there is any items in the slot
         /// </summary>
@@ -177,6 +201,7 @@ namespace InventorySpace.DataStructure
     {
         public int quantity;
         public Item item;
+        public List<ItemParameter> parameters;
 
         public bool IsEmpty => item == null;
 
@@ -186,6 +211,7 @@ namespace InventorySpace.DataStructure
             {
                 item = this.item,
                 quantity = newQuantity,
+                parameters = new List<ItemParameter>(this.parameters)
             };
         }
 
@@ -194,6 +220,7 @@ namespace InventorySpace.DataStructure
             {
                 item = null,
                 quantity = 0,
+                parameters = new List<ItemParameter>()
             };
     }
 }

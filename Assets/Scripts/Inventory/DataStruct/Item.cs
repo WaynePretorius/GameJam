@@ -1,4 +1,5 @@
-
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace InventorySpace.DataStructure
@@ -12,6 +13,7 @@ namespace InventorySpace.DataStructure
         [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] [field: TextArea] public string Description { get; set; }
         [field: SerializeField] public Sprite ItemImage { get; set; }
+        [field: SerializeField] public List<ItemParameter> defaultParamter { get; set; }
     }
 
     public interface IDestroyableItem
@@ -25,6 +27,18 @@ namespace InventorySpace.DataStructure
 
         public AudioClip actionSFX { get; }
 
-        bool PerFormAction(GameObject character);
+        bool PerFormAction(GameObject character, List<ItemParameter> itemStates);
+    }
+
+    [Serializable]
+    public struct ItemParameter : IEquatable<ItemParameter>
+    {
+        public EquiptItemsScriptable itemParamater;
+        public float value;
+
+        public bool Equals(ItemParameter parameter)
+        {
+            return parameter.itemParamater == itemParamater;
+        }
     }
 }

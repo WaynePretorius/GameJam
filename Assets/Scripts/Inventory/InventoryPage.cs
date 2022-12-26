@@ -45,8 +45,19 @@ namespace InventorySpace.UI
                 item.OnItemBeginDrag += HandleBeginDrag;
                 item.OnItemDropped += HandleSwap;
                 item.OnItemEndDrag += HandleEndDrag;
-
+                item.OnRightMousButtonClicked += HandleShowItemActions;
             }
+        }
+
+        private void HandleShowItemActions(InventoryItem invenItem)
+        {
+            //add the index of the item and store it
+            int index = itemList.IndexOf(invenItem);
+            if (index == -1)
+            {
+                return;
+            }
+            OnItemRequested?.Invoke(index);
         }
 
         //resets the data of the inventory

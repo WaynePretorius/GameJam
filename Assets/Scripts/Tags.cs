@@ -39,4 +39,7 @@ public static class Tags
     //Actions
     public static string ACTION_USE = "Use";
     public static string ACTION_EQUIPT = "Equipt";
+
+    //Parameter
+    public static string PARAMETER_HARVEST = "HarvestAmount";
 }

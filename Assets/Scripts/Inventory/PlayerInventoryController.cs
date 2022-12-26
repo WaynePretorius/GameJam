@@ -2,7 +2,7 @@ using InventorySpace.UI;
 using InventorySpace.DataStructure;
 using UnityEngine;
 using System.Collections.Generic;
-using System;
+using System.Text;
 
 namespace InventorySpace
 {
@@ -64,7 +64,23 @@ namespace InventorySpace
 
         private void HandleItemActionRequested(int itemIndex)
         {
+            InventoryItemScribatable item = inventoryData.GetItemAt(itemIndex);
+            if (item.IsEmpty)
+            {
+                return;
+            }
 
+            IItemAction itemAction = item.item as IItemAction;
+            if(itemAction != null)
+            {
+                itemAction.PerFormAction(gameObject, null);
+            }
+
+            IDestroyableItem RemoveItem = item.item as IDestroyableItem;
+            if(RemoveItem != null)
+            {
+                inventoryData.RemoveItem(itemIndex, 1);
+            }
         }
 
         private void HandleDragging(int itemIndex)
@@ -101,7 +117,23 @@ namespace InventorySpace
             }
             //update the UI with the image, name and description of the image
             Item item = inventoryItem.item;
-            inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
+
+            string description = PrepareDescription(inventoryItem);
+
+            inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, description);
+        }
+
+        public string PrepareDescription(InventoryItemScribatable inventoryItem)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(inventoryItem.item.Description);
+            sb.AppendLine();
+            for (int i = 0; i < inventoryItem.parameters.Count; i++)
+            {
+                sb.Append($"{inventoryItem.parameters[i].itemParamater} " + $": {inventoryItem.parameters[i].value} / " + $" {inventoryItem.item.defaultParamter[i].value}");
+                sb.AppendLine();
+            }
+            return sb.ToString();
         }
 
         private void Update()

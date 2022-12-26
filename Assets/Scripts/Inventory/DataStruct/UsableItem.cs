@@ -11,7 +11,7 @@ namespace InventorySpace.DataStructure
         public string actionName => Tags.ACTION_USE;
 
         public AudioClip actionSFX { get; private set; }
-        public bool PerFormAction(GameObject character)
+        public bool PerFormAction(GameObject character, List<ItemParameter> itemStates = null)
         {
             foreach (ModifierData data in modData)
             {

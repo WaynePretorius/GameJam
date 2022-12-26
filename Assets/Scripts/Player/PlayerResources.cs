@@ -8,10 +8,11 @@ public class PlayerResources : MonoBehaviour
     //variables
     [SerializeField] private int currentApples = 0;
     [SerializeField] private int harvestAmount = 2;
-    [SerializeField] private int coins;
+    [SerializeField] private int coins = 0;
 
     //references
     [SerializeField] private TextMeshProUGUI appleText;
+    [SerializeField] private TextMeshProUGUI coinText;
     [SerializeField] private TextMeshProUGUI pressR;
 
     [SerializeField] GameObject targetObject;
@@ -37,6 +38,11 @@ public class PlayerResources : MonoBehaviour
         coins += addedCoins;
     }
 
+    public void RemoveCoins(int coinsRemoved)
+    {
+        coins -= coinsRemoved;
+    }
+
     private void Update()
     {
         ShowResources();
@@ -45,8 +51,10 @@ public class PlayerResources : MonoBehaviour
     //shows the resources that the player currently has
     private void ShowResources()
     {
-        //shoes the amount of apples
+        //shows the amount of apples
         appleText.text = currentApples.ToString();
+        //shows the amount of coins
+        coinText.text = coins.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D target)
