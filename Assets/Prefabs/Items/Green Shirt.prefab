@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9086343769886193272}
   - component: {fileID: 9086343769886193275}
   - component: {fileID: 9086343769886193274}
+  - component: {fileID: -4923807047364234964}
   m_Layer: 5
   m_Name: Green Shirt
   m_TagString: Untagged
@@ -103,3 +104,15 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-4923807047364234964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086343769886193276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192a0e03d684cda4fbcd01e19dd6c885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

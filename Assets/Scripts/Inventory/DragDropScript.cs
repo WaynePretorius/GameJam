@@ -7,6 +7,7 @@ public class DragDropScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 {
     //references
     public static GameObject draggedItem;
+
     public ItemTypes itemType;
 
     Vector3 startPos;

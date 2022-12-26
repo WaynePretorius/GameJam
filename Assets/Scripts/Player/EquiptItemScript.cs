@@ -24,6 +24,23 @@ public class EquiptItemScript : MonoBehaviour
     public void Equiptweapon(GameObject weapon)
     {
         harvester.sprite = weapon.GetComponent<Image>().sprite;
+    }        
+    
+    public void EquiptShirt(SpriteRenderer shirt)
+    {
+        torso.sprite = shirt.sprite;
+    }
+    public void EquiptHood(SpriteRenderer head)
+    {
+        hood.sprite = head.sprite;
+    }
+    public void EquiptTrousers(SpriteRenderer pelvis)
+    {
+        trousers.sprite = pelvis.sprite;
+    }
+    public void Equiptweapon(SpriteRenderer weapon)
+    {
+        harvester.sprite = weapon.sprite;
     }    
 
 }

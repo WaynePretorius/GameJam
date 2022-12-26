@@ -39,6 +39,24 @@ public class EquiptSlotItem : MonoBehaviour
                 break;
         }
 
+    }    public void EquiptItem(SpriteRenderer itemToEquipt, ItemTypes itemType)
+    {
+        switch (itemType)
+        {
+            case ItemTypes.Hood :
+                equiptItem.EquiptHood(itemToEquipt);
+                break;
+            case ItemTypes.Harvester:
+                equiptItem.Equiptweapon(itemToEquipt);
+                break;
+            case ItemTypes.Shirt:
+                equiptItem.EquiptShirt(itemToEquipt);
+                break;
+            case ItemTypes.Trousers:
+                equiptItem.EquiptTrousers(itemToEquipt);
+                break;
+        }
+
     }
 
 }

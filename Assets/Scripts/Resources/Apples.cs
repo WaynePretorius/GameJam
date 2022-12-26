@@ -62,7 +62,7 @@ public class Apples : MonoBehaviour
             apples = 0;
             //the resource is finished
             hasApples = false;
-            SetAppleSprite();
+            Destroy(gameObject);
         }
         else
         {
