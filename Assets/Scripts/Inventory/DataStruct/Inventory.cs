@@ -33,16 +33,16 @@ namespace InventorySpace.DataStructure
         public int AddItem(Item item, int quantity)
         {
             //if the item can't be stacked
-            if (!item.isStackable)
+            if (item.isStackable == false)
             {
-                //as long as the quantity is more than 0 and the inventory as empty slots
-                while(quantity > 0 && !IsInventoryFull())
-                {
-                    //add the item, only 1 of them
-                   quantity -= AddItemToFreeSlot(item, 1);
-                }
-                InformAboutChange();
-                return quantity;
+                    //as long as the quantity is more than 0 and the inventory as empty slots
+                    while (quantity > 0 && IsInventoryFull() == false)
+                    {
+                        //add the item, only 1 of them
+                        quantity -= AddItemToFreeSlot(item, 1);
+                    }
+                    InformAboutChange();
+                    return quantity;
             }
             //quantity is same is item quantity
             quantity = AddStackableItem(item, quantity);
@@ -108,7 +108,7 @@ namespace InventorySpace.DataStructure
                 }
             }
 
-            while(quantity > 0 && !IsInventoryFull())
+            while(quantity > 0 && IsInventoryFull() == false)
             {
                 int newQuantity = Mathf.Clamp(quantity, 0, item.MaxStackSize);
                 quantity -= newQuantity;
