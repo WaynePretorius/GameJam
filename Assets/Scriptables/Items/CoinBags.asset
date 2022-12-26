@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a021265037d7c4c927f751f06a4131, type: 3}
+  m_Name: CoinBags
+  m_EditorClassIdentifier: 
+  <isStackable>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 3
+  <Name>k__BackingField: CoinBag
+  <Description>k__BackingField: Used to get extra coins
+  <ItemImage>k__BackingField: {fileID: -1887229225, guid: bfab1b62d71c58e49b8f946fdfa7f1b7, type: 3}
+  modData: []

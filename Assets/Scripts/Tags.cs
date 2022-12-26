@@ -35,4 +35,8 @@ public static class Tags
     //Inventory
     public static string INVENTORY_OBJ_SPRITE = "icon";
     public static string INVENTORY_OBJ_AMOUNT = "amount";
+
+    //Actions
+    public static string ACTION_USE = "Use";
+    public static string ACTION_EQUIPT = "Equipt";
 }

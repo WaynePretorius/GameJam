@@ -8,6 +8,7 @@ public class PlayerResources : MonoBehaviour
     //variables
     [SerializeField] private int currentApples = 0;
     [SerializeField] private int harvestAmount = 2;
+    [SerializeField] private int coins;
 
     //references
     [SerializeField] private TextMeshProUGUI appleText;
@@ -28,6 +29,12 @@ public class PlayerResources : MonoBehaviour
     {
         get { return currentApples; }
         set { currentApples = value; }
+    }
+
+    //public functions
+    public void AddCoins(int addedCoins)
+    {
+        coins += addedCoins;
     }
 
     private void Update()
