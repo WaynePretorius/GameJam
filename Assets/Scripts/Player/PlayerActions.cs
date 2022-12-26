@@ -1,4 +1,3 @@
-using InventorySpace.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,13 +13,12 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private GameObject playerBody;
     [SerializeField] private AudioSource mySFX;
     [SerializeField] private PlayerResources harvest;
-    [SerializeField] private InventoryPage inventory;
+    [SerializeField] private GameObject inventory;
 
     private Animator myAnimator;
     private Rigidbody2D myBody2D;
 
     private bool inShop = false;
-    private bool inInventory = false;
 
     //first function when the object is enabled
     private void Awake()
@@ -74,9 +72,14 @@ public class PlayerActions : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             //open and closes the inventory
-            inInventory = !inInventory;
-            inventory.ShowInventory(inInventory);
-
+            if (inventory.activeInHierarchy)
+            {
+                inventory.SetActive(false);
+            }
+            else
+            {
+                inventory.SetActive(true);
+            }
         }
     }
 

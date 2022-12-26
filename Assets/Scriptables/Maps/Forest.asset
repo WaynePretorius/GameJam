@@ -212,7 +212,7 @@ MonoBehaviour:
     mapTiles:
     - {fileID: 11400000, guid: a1bf26ddf65a8544a84cebe088cd8063, type: 2}
   iterations: 15
-  mapWidth: 400
-  mapHeight: 400
-  minChanceForSpawning: 100
-  MaxChanceForSpawning: 135
+  mapWidth: 50
+  mapHeight: 50
+  minChanceForSpawning: 40
+  MaxChanceForSpawning: 75

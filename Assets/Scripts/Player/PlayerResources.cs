@@ -7,6 +7,7 @@ public class PlayerResources : MonoBehaviour
 {
     //variables
     [SerializeField] private int currentApples = 0;
+    [SerializeField] private int baseHarvestAmount = 2;
     [SerializeField] private int harvestAmount = 2;
     [SerializeField] private int coins = 0;
 
@@ -41,6 +42,11 @@ public class PlayerResources : MonoBehaviour
     public void RemoveCoins(int coinsRemoved)
     {
         coins -= coinsRemoved;
+    }
+
+    public void AddToHarvestAmount(int harvesAmountAdded)
+    {
+        harvestAmount += harvesAmountAdded;
     }
 
     private void Update()
