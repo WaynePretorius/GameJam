@@ -13,16 +13,28 @@ public class ShopInventory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI totalText;
     [SerializeField] private Button appleButton;
 
+    private bool inShop = false;
+
     public int TotalPrice
     {
         get { return totalPrice; }
         set { totalPrice = value; }
     }
 
+    public bool GetInShop
+    {
+        get { return inShop; }
+    }
+
     private void OnEnable()
     {
         PrepInventory();
+        inShop = true;
+    }
 
+    private void OnDisable()
+    {
+        inShop = false;
     }
 
     public void PrepInventory()

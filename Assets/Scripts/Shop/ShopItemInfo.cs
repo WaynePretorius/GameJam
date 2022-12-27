@@ -44,6 +44,7 @@ public class ShopItemInfo : MonoBehaviour
         priceText.text = itemPrice.ToString();
         ItemImage.sprite = item.GetComponent<Image>().sprite;
         inventory = FindObjectOfType<ShopInventory>();
+        itemPrice = item.GetPrice;
     }
 
     public void SelectItem()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,6 +11,35 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public bool isEmpty = true;
 
     [SerializeField] private bool isEquipable = false;
+    [SerializeField] private GameObject sellButton;
+    [SerializeField] private TextMeshProUGUI sellText;
+
+    private bool inShop = false;
+    public bool isSellButton = false;
+    public bool isSold = false;
+
+    public bool SetInShop = true;
+
+    private void OnEnable()
+    {
+        if (isSellButton)
+        {
+            inShop = FindObjectOfType<ShopInventory>().gameObject.activeInHierarchy;
+
+            if (inShop)
+            {
+                sellButton.SetActive(true);
+                sellText.gameObject.SetActive(true);
+            }
+            else
+            {
+                sellButton.SetActive(false);
+                sellText.gameObject.SetActive(false);
+            }
+        }
+    }
+
+
     public GameObject item
     {
         //fits child of the item slot is the image that will be dragged
@@ -26,62 +56,77 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(item == null)
-        {
-            //if the slot is empty, item can be dropped
-            GameObject draggedItem = DragDropScript.draggedItem;
 
-            EquiptSlotItem script = GetComponent<EquiptSlotItem>();
-
-            //compare itemtype to dragged item
-            ItemTypes itemDraggedType = draggedItem.GetComponent<DragDropScript>().itemType;
-
-            if (IsTypeCorrect(itemDraggedType))
+            if (item == null)
             {
-                draggedItem.transform.SetParent(transform);
-                if (isEquipable)
+                //if the slot is empty, item can be dropped
+                GameObject draggedItem = DragDropScript.draggedItem;
+
+                EquiptSlotItem script = GetComponent<EquiptSlotItem>();
+
+                //compare itemtype to dragged item
+                ItemTypes itemDraggedType = draggedItem.GetComponent<DragDropScript>().itemType;
+
+                if (IsTypeCorrect(itemDraggedType))
                 {
-                    if (script != null)
+                    draggedItem.transform.SetParent(transform);
+                    if (isEquipable)
                     {
-                        script.EquiptItem(draggedItem, itemDraggedType);
-                        if (IsHarvestType(itemDraggedType))
+                        if (script != null)
                         {
-                            FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                            script.EquiptItem(draggedItem, itemDraggedType);
+                            if (IsHarvestType(itemDraggedType))
+                            {
+                                FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                            }
                         }
                     }
                 }
             }
-        }
-        else
-        {
-            //if there is other items in the slot
-            GameObject draggedItem = DragDropScript.draggedItem;
-            ItemTypes itemDraggedType = draggedItem.GetComponent<DragDropScript>().itemType;
-
-            if (IsTypeCorrect(itemDraggedType))
+            else
             {
-                if (isEquipable)
+                //if there is other items in the slot
+                GameObject draggedItem = DragDropScript.draggedItem;
+                ItemTypes itemDraggedType = draggedItem.GetComponent<DragDropScript>().itemType;
+
+                if (IsTypeCorrect(itemDraggedType))
                 {
-                    EquiptSlotItem script = GetComponent<EquiptSlotItem>();
-                    if (script != null)
+                    if (isEquipable)
                     {
-                        script.EquiptItem(draggedItem, itemDraggedType);
-                        if (IsHarvestType(itemDraggedType))
+                        EquiptSlotItem script = GetComponent<EquiptSlotItem>();
+                        if (script != null)
                         {
-                            FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                            script.EquiptItem(draggedItem, itemDraggedType);
+                            if (IsHarvestType(itemDraggedType))
+                            {
+                                FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                            }
                         }
                     }
-                }
 
-                item.transform.SetParent(draggedItem.transform.parent);
-                draggedItem.transform.SetParent(transform);
+
+
+                    item.transform.SetParent(draggedItem.transform.parent);
+                    draggedItem.transform.SetParent(transform);
+                }
             }
-        }
+        
+    }
+
+    public void SetBoolFalse()
+    {
+        StartCoroutine(SetSoldFalse());
+    }
+
+    private IEnumerator SetSoldFalse()
+    {
+        yield return new WaitForSeconds(1f);
+        isSold = false;
     }
 
     private bool IsTypeCorrect(ItemTypes item)
     {
-        if(allowedItemTypes == ItemTypes.Any)
+        if(allowedItemTypes == ItemTypes.Any || allowedItemTypes == ItemTypes.Sell)
         {
             return true;
         }

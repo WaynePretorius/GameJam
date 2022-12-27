@@ -42,4 +42,9 @@ public class InventoryManager : MonoBehaviour
         item.transform.SetParent(itemSlot);
         item.transform.localScale = new Vector3Int(1, 1);
     }
+
+    public void RemoveItem(GameObject item)
+    {
+        Destroy(item);
+    }
 }

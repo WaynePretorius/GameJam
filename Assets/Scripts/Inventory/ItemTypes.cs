@@ -9,5 +9,6 @@ public enum ItemTypes
     Harvester,
     Hood,
     Trousers,
-    Shirt
+    Shirt,
+    Sell
 }

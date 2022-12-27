@@ -15,6 +15,12 @@ public class DragDropScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     Transform startParent;
 
     [SerializeField] private int harvestAmount;
+    [SerializeField] private int itemPrice = 5;
+
+    public int GetPrice
+    {
+        get { return itemPrice; }
+    }
 
     public int GetHarvestAmount
     {
