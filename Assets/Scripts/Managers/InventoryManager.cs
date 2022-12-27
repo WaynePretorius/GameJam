@@ -5,38 +5,41 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField]private List<ItemSlot> itemSlots = new List<ItemSlot>();
+
+    [SerializeField] private List<GameObject> itemSlots;
 
     private void Start()
     {
-        AddSlotsToList();
+        AddToList();
     }
 
-    private void AddSlotsToList()
+    private void AddToList()
     {
-        ItemSlot[] slotsInBackpack;
-        slotsInBackpack = GetComponentsInChildren<ItemSlot>();
-
-        foreach (ItemSlot slot in slotsInBackpack)
+        ItemSlot[] slots = GetComponentsInChildren<ItemSlot>();
+        foreach (var item in slots)
         {
-            itemSlots.Add(slot);
+            itemSlots.Add(item.gameObject);
         }
     }
 
     public bool AddItem(GameObject item)
     {
+
         for (int i = 0; i < itemSlots.Count; i++)
         {
-            if (itemSlots[i].transform.GetChild(0) == null)
+            if(itemSlots[i].transform.childCount == 0)
             {
-                if (itemSlots[i].isEmpty)
-                {
-                    item.transform.SetParent(itemSlots[i].transform);
-                    return true;
-                }
+                SpawnItem(item, itemSlots[i].transform);
+                return true;
             }
         }
 
         return false;
+    }
+
+    private void SpawnItem(GameObject item, Transform itemSlot)
+    {
+        item.transform.SetParent(itemSlot);
+        item.transform.localScale = new Vector3Int(1, 1);
     }
 }

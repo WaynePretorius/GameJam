@@ -31,6 +31,7 @@ public static class Tags
 
     //Names
     public static string OBJNAME_APPLE = "Apples";
+    public static string OBJNAME_SHOPKEEPER = "Shopkeep";
 
     //Inventory
     public static string INVENTORY_OBJ_SPRITE = "icon";
@@ -39,5 +40,5 @@ public static class Tags
     //Actions
     public static string ACTION_USE = "Use";
     public static string ACTION_EQUIPT = "Equipt";
-
+    
 }

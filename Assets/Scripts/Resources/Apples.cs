@@ -33,6 +33,11 @@ public class Apples : MonoBehaviour
         set { hasApples = value; }
     }
 
+    public int GetApplePrice()
+    {
+        return applePrice;
+    }
+
     public void CreateApples()
     {
         apples = Random.Range(minApples, maxApples);

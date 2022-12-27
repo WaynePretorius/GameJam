@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6544640487405403070}
   - component: {fileID: 6544640487405403069}
   - component: {fileID: 6544640487405403068}
-  - component: {fileID: -7121194632403993893}
   m_Layer: 5
   m_Name: RedHood
   m_TagString: Untagged
@@ -104,15 +103,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &-7121194632403993893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6544640487405403058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192a0e03d684cda4fbcd01e19dd6c885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

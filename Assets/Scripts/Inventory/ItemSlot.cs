@@ -44,6 +44,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     if (script != null)
                     {
                         script.EquiptItem(draggedItem, itemDraggedType);
+                        if (IsHarvestType(itemDraggedType))
+                        {
+                            FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                        }
                     }
                 }
             }
@@ -62,6 +66,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     if (script != null)
                     {
                         script.EquiptItem(draggedItem, itemDraggedType);
+                        if (IsHarvestType(itemDraggedType))
+                        {
+                            FindObjectOfType<PlayerResources>().SetHarvestAmount(draggedItem.GetComponent<DragDropScript>().GetHarvestAmount);
+                        }
                     }
                 }
 
@@ -80,6 +88,18 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         else
         {
             return allowedItemTypes == item;
+        }
+    }
+
+    private bool IsHarvestType(ItemTypes item)
+    {
+        if(item == ItemTypes.Harvester)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

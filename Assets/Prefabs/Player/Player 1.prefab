@@ -188,7 +188,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1693840356993959228
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   currentApples: 0
   baseHarvestAmount: 2
   harvestAmount: 2
-  coins: 0
+  coins: 50
   appleText: {fileID: 0}
   coinText: {fileID: 0}
   pressR: {fileID: 0}

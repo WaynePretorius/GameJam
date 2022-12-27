@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7027929084407911422}
   - component: {fileID: 7027929084407911423}
   - component: {fileID: 7027929084407911420}
-  - component: {fileID: 6872412693795371060}
   m_Layer: 5
   m_Name: GreenPants
   m_TagString: Untagged
@@ -104,15 +103,3 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6872412693795371060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7027929084407911418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192a0e03d684cda4fbcd01e19dd6c885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

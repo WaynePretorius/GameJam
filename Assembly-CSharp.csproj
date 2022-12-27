@@ -57,26 +57,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Managers\Soundsource.cs" />
+    <Compile Include="Assets\Scripts\Inventory\SetBaseSprite.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneChanger.cs" />
-    <Compile Include="Assets\Scripts\Inventory\DataStruct\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Inventory\InventoryPage.cs" />
-    <Compile Include="Assets\Scripts\Inventory\DataStruct\Item.cs" />
-    <Compile Include="Assets\Scripts\Inventory\MouseFollower.cs" />
+    <Compile Include="Assets\Scripts\Managers\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\Generators\AppleSpawner.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquiptSlotItem.cs" />
     <Compile Include="Assets\Scripts\Tags.cs" />
     <Compile Include="Assets\Scripts\Generators\MapWall.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemTypes.cs" />
     <Compile Include="Assets\Scripts\Managers\MusicManager.cs" />
-    <Compile Include="Assets\Scripts\Inventory\ItemDescription.cs" />
     <Compile Include="Assets\Scripts\Resources\Apples.cs" />
+    <Compile Include="Assets\Scripts\Inventory\DragDropScript.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Generators\TileChunk.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopInventory.cs" />
     <Compile Include="Assets\Scripts\Generators\TileSettings.cs" />
-    <Compile Include="Assets\Scripts\Inventory\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerResources.cs" />
     <Compile Include="Assets\Scripts\Menu\Options.cs" />
-    <Compile Include="Assets\Scripts\Inventory\PlayerInventoryController.cs" />
     <Compile Include="Assets\Scripts\Generators\Mapgenerator.cs" />
     <Compile Include="Assets\Scripts\Menu\Buttons.cs" />
+    <Compile Include="Assets\Scripts\Player\EquiptItemScript.cs" />
+    <Compile Include="Assets\Scripts\Shop\ShopItemInfo.cs" />
+    <Compile Include="Assets\Scripts\Resources\ArrowPointer.cs" />
+    <Compile Include="Assets\Scripts\Managers\FollowPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -41,6 +41,7 @@ public class EquiptItemScript : MonoBehaviour
     public void Equiptweapon(SpriteRenderer weapon)
     {
         harvester.sprite = weapon.sprite;
+        FindObjectOfType<PlayerResources>().SetHarvestAmount(2);
     }    
 
 }

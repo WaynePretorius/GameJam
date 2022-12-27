@@ -14,6 +14,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private AudioSource mySFX;
     [SerializeField] private PlayerResources harvest;
     [SerializeField] private GameObject inventory;
+    [SerializeField] private GameObject applArrow;
 
     private Animator myAnimator;
     private Rigidbody2D myBody2D;
@@ -79,6 +80,18 @@ public class PlayerActions : MonoBehaviour
             else
             {
                 inventory.SetActive(true);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (!applArrow.activeInHierarchy)
+            {
+                applArrow.SetActive(true);
+            }
+            else
+            {
+                return;
             }
         }
     }

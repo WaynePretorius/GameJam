@@ -33,6 +33,12 @@ public class PlayerResources : MonoBehaviour
         set { currentApples = value; }
     }
 
+    public int Coins
+    {
+        get { return coins; }
+        set { coins = value; }
+    }
+
     //public functions
     public void AddCoins(int addedCoins)
     {
@@ -44,9 +50,23 @@ public class PlayerResources : MonoBehaviour
         coins -= coinsRemoved;
     }
 
-    public void AddToHarvestAmount(int harvesAmountAdded)
+    public void SetHarvestAmount(int harvesAmountAdded)
     {
-        harvestAmount += harvesAmountAdded;
+        harvestAmount = harvesAmountAdded;
+    }
+
+    public void ExchangeApplesForCoins()
+    {
+        int price = FindObjectOfType<Apples>().GetApplePrice();
+        if(currentApples > 0)
+        {
+            int amount = currentApples;
+            for (int i = 0; i < amount; i++)
+            {
+                coins += price;
+            }
+            currentApples = 0;
+        }
     }
 
     private void Update()
